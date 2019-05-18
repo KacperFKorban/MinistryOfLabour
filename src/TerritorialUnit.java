@@ -27,7 +27,7 @@ public class TerritorialUnit {
             registeredAs.add(territorialUnitType);
             System.out.println("Registered territorial unit id: " + id + " as: " + territorialUnitType.toString());
         } else {
-            throw new RuntimeException("Already registered as " + territorialUnitType.toString());
+            System.out.println("No can do!");
         }
     }
     public void unregisterAs(TerritorialUnitType territorialUnitType) {
@@ -36,7 +36,7 @@ public class TerritorialUnit {
             registeredAs.add(territorialUnitType);
             System.out.println("Unregistered territorial unit id: " + id + " as: " + territorialUnitType.toString());
         } else {
-            throw new RuntimeException("Not registered as " + territorialUnitType.toString());
+            System.out.println("No can do!");
         }
     }
 
