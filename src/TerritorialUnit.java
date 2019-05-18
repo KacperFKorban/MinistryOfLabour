@@ -5,6 +5,14 @@ public class TerritorialUnit {
     private static int counter = 0;
     private int id;
 
+    public EnumSet<TerritorialUnitType> getRegisteredAs() {
+        return registeredAs;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     public TerritorialUnit() {
         this.id = counter++;
     }
