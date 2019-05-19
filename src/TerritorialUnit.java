@@ -31,14 +31,15 @@ public class TerritorialUnit {
         }
     }
     public void unregisterAs(TerritorialUnitType territorialUnitType) {
-        if(registeredAs.contains(territorialUnitType)) {
+        if (registeredAs.contains(territorialUnitType)) {
             MinistryOfLabour.unregisterAs(territorialUnitType, this);
-            registeredAs.add(territorialUnitType);
+            registeredAs.remove(territorialUnitType);
             System.out.println("Unregistered territorial unit id: " + id + " as: " + territorialUnitType.toString());
         } else {
             System.out.println("No can do!");
         }
     }
+
 
     public void message(String msg) {
         System.out.println("Territorial unit with id: " + id + " received msg: " + msg);
