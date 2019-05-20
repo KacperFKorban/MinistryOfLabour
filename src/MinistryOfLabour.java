@@ -21,6 +21,12 @@ public class MinistryOfLabour {
     }
 
     public static void sendTo(List<TerritorialUnitType> addressees, String msg) {
-        registry.entrySet().stream().filter(e -> addressees.contains(e.getKey())).forEach(e -> e.getValue().forEach(t -> t.message(msg)));
+        registry
+                .entrySet()
+                .stream()
+                .filter(e -> addressees.contains(e.getKey()))
+                .flatMap(e -> e.getValue().stream())
+                .distinct()
+                .forEach(t -> t.message(msg));
     }
 }
