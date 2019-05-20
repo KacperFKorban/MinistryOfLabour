@@ -12,8 +12,8 @@ public class GUI {
         ArrayList<TerritorialUnit> units = new ArrayList<>();
 
         JFrame frame = new JFrame();
-        frame.setBounds(100, 100, 700, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(100, 100, 700, 650);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(null);
 
         JButton btnCreate = new JButton("Create new unit");
@@ -141,6 +141,36 @@ public class GUI {
                 for(String ss : missing) {
                     listUnitsTypes.addElement(ss);
                 };
+            }
+        });
+        
+        JLabel receiversLabel = new JLabel("Receivers:");
+        receiversLabel.setBounds(10, 385, 160, 20);
+        frame.add(receiversLabel);
+
+        DefaultListModel<TerritorialUnitType> receiversListModel = new DefaultListModel<>();
+        Stream.of(TerritorialUnitType.values()).forEach(receiversListModel::addElement);
+        JList<TerritorialUnitType> receiversList = new JList<>(receiversListModel);
+        receiversList.setBounds(0, 30, 160, 80);
+
+        JScrollPane receiversListScrollPane = new JScrollPane(receiversList);
+        receiversListScrollPane.setBounds(10, 405, 160, 105);
+        frame.add(receiversListScrollPane);
+
+        JButton btnSend = new JButton("Send message");
+        btnSend.setBounds(10, 520, 160, 30);
+        frame.add(btnSend);
+
+        JTextArea messageTextArea = new JTextArea();
+        messageTextArea.setLineWrap(true);
+        messageTextArea.setWrapStyleWord(true);
+        messageTextArea.setBounds(200, 385, 380, 165);
+        frame.add(messageTextArea);
+
+        btnSend.addActionListener(e -> {
+            String message = messageTextArea.getText().trim();
+            if(!message.isEmpty()) {
+                MinistryOfLabour.sendTo(receiversList.getSelectedValuesList(), message);
             }
         });
 
