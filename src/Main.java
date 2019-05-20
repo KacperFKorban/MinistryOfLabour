@@ -21,7 +21,7 @@ public class Main {
         }
 
         for(TerritorialUnitType ty : TerritorialUnitType.values()) {
-            MinistryOfLabour.sendTo(List.of(ty), "Andrzej to JS Dev, " + ty.toString());
+            MinistryOfLabour.sendTo(List.of(ty), "This is message for type: " + ty.toString());
         }
     }
 }
